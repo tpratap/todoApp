@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card border-0 shadow p-3">
+                <div class="form-floating mb-3 tetx-center">
+                    <h5 class="text-center text-warning">Add Todo</h5>
+                </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="title">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="deadline" name="deadline" [(ngModel)]="deadline">
+                        <label for="deadline">Deadline</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="desc" name="desc" [(ngModel)]="desc"></textarea>
+                        <label for="desc">Description</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-success" (click)="addTodos()">Add Todo</button>
+            </div>
+        </div>
+        <div class="col-md-8 mt-2">
+            <div>
+                <h5 class="text-danger"> Todo List</h5>
+                <button class="btn btn-warning" (click) = "logout()" >Logout</button>
+            </div>
+            <div class="card p-3 shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="font-size: large;">Todo</th>
+                            <th scope="colgroup" style="color: red;">
+                                Click on the Uncomplete to mark it Complete.
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <th scope = "col">Title</th>
+                            <th scope = "col">Description</th>
+                            <th scope = "col">Deadline</th>
+                          <tr *ngFor="let todo of todosList">
+                            <td >{{todo.title}}</td>
+                            <td>{{todo.desc}}</td>
+                            <td>{{todo.deadline}}</td>
+                            <td>
+                                <button class="btn btn-info" (click)="updateStatus(todo)">{{todo.status}}</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteTodos(todo)">Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
